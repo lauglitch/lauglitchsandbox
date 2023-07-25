@@ -50,7 +50,7 @@ function getDomain(url) {
 function toggleContentBasedOnURL() {
     var currentURL = window.location.href;
 
-    if (currentURL === "https://www.lauglitchsandbox.blogspot.com/") {
+    if (currentURL === "https://lauglitchsandbox.blogspot.com") {
         // HEADER
         document.getElementById('lauglitchLogoInicio').style.display = 'block';
         document.getElementById('keypadsInicio').style.display = 'block';
