@@ -206,6 +206,7 @@ function toggleContentBasedOnURL() {
         document.getElementById('bodyHome').style.display = 'none';
         document.getElementById('bodyContacto').style.display = 'none';
     } else {
+        console.log("9 " + currentURL);
         console.log("No existe esta página.");
     }
 }
