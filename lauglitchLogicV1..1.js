@@ -9,7 +9,7 @@ var site = "Home";  // home || contact
 toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
-console.log("Tracing: 1.06");
+console.log("Tracing: 1.061");
 
 function redirectToHomeES() {
     setLanguage("ES");
@@ -51,7 +51,7 @@ function getDomain(url) {
 function toggleContentBasedOnURL() {
     var currentURL = window.location.href;
     
-    if (currentURL === "https://www.lauglitch.com") { 
+    if (currentURL === "https://www.lauglitch.com/") { 
         console.log("1 " + currentURL);
         // HEADER
         document.getElementById('lauglitchLogoInicio').style.display = 'block';
