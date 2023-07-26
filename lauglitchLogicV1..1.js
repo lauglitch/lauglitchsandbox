@@ -10,7 +10,7 @@ toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
 
-console.log("Tracing: 1.061");
+console.log("Tracing: 1.07");
 
 function redirectToHomeES() {
     setLanguage("ES");
