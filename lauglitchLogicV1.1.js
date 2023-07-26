@@ -19,7 +19,7 @@ function redirectToHomeES() {
 function redirectToHomeEN() {
     setLanguage("EN");
     setSite("home");
-    window.location.href =  "https://lauglitch.com/p/home.html" //"https://www.lauglitch.com/p/home.html";
+    window.location.href =  "lauglitch.com/p/home.html" //"https://www.lauglitch.com/p/home.html";
 }
 function redirectToContactES() {
     setLanguage("ES");
