@@ -9,17 +9,17 @@ var site = "Home";  // home || contact
 toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
-console.log("Tracing: 1.0");
+console.log("Tracing: 1.01");
 
 function redirectToHomeES() {
     setLanguage("ES");
     setSite("home");
-    window.location.href = "https://www.lauglitch.com";
+    window.location.href = "https://lauglitchsandbox.blogspot.com/"; // "https://www.lauglitch.com";
 }
 function redirectToHomeEN() {
     setLanguage("EN");
     setSite("home");
-    window.location.href = "https://www.lauglitch.com/p/home.html";
+    window.location.href =  "https://www.lauglitch.com/p/home.html";
 }
 function redirectToContactES() {
     setLanguage("ES");
@@ -51,7 +51,7 @@ function getDomain(url) {
 function toggleContentBasedOnURL() {
     var currentURL = window.location.href;
 
-    if (currentURL === "https://lauglitchsandbox.blogspot.com/") {
+    if (currentURL === "https://lauglitchsandbox.blogspot.com/") { // "https://www.lauglitch.com";
         // HEADER
         document.getElementById('lauglitchLogoInicio').style.display = 'block';
         document.getElementById('keypadsInicio').style.display = 'block';
