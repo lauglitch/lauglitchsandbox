@@ -13,7 +13,7 @@ window.onhashchange = toggleContentBasedOnURL;
 function redirectToHomeES() {
     setLanguage("ES");
     setSite("home");
-    window.location.href = "https://www.lauglitch.com";
+    window.location.href = "https://www.lauglitchsandbox.blogspot.com";
 }
 function redirectToHomeEN() {
     setLanguage("EN");
