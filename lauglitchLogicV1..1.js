@@ -9,12 +9,12 @@ var site = "Home";  // home || contact
 toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
-console.log("Tracing: 1.05");
+console.log("Tracing: 1.06");
 
 function redirectToHomeES() {
     setLanguage("ES");
     setSite("home");
-    window.location.href = "https://www.lauglitch.com";
+    window.location.href = "https://www.lauglitch.com/";
 }
 function redirectToHomeEN() {
     setLanguage("EN");
