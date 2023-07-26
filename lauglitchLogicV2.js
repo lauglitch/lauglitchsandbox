@@ -9,7 +9,7 @@ var site = "Home";  // home || contact
 toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
-console.log("Versión lauglitchLogic: 2");
+console.log("Versión lauglitchLogic: 3");
 
 function redirectToHomeES() {
     setLanguage("ES");
