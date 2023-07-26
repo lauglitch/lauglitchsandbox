@@ -19,17 +19,17 @@ function redirectToHomeES() {
 function redirectToHomeEN() {
     setLanguage("EN");
     setSite("home");
-    window.location.href =  "https://www.lauglitch.com/p/home.html";
+    window.location.href =  "https://lauglitch.com/p/home.html" //"https://www.lauglitch.com/p/home.html";
 }
 function redirectToContactES() {
     setLanguage("ES");
     setSite("contact");
-    window.location.href = "https://www.lauglitch.com/p/contacto.html";
+    window.location.href = "https://lauglitch.com/p/contacto.html" //"https://www.lauglitch.com/p/contacto.html";
 }
 function redirectToContactEN() {
     setLanguage("EN");
     setSite("contact");
-    window.location.href = "https://www.lauglitch.com/p/contact.html";
+    window.location.href = "https://lauglitch.com/p/contact.html"; //"https://www.lauglitch.com/p/contact.html";
 }
 function setLanguage(lang) {
     language = lang;
