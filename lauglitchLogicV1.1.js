@@ -214,9 +214,9 @@ function showOrHideLangButtons(){
     isShowing = window.getComputedStyle(botonesIdiomas).getPropertyValue('display');
     if (isShowing === 'block') {
         document.getElementById('botonesIdiomas').style.display = 'none';
-    } else if (estiloDisplay === 'none') {
+    } else if (isShowing === 'none') {
         document.getElementById('botonesIdiomas').style.display = 'block';
     } else {
-        console.log('El estilo de visualización es otro:', estiloDisplay);
+        console.log('El estilo de visualización es otro:', isShowing);
     }
 }
