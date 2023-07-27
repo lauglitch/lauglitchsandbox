@@ -9,7 +9,7 @@ var site = "Home";  // home || contact
 toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
-console.log("Tracing: 1.05");
+console.log("Tracing: 1.051");
 
 function redirectToHomeES() {
     setLanguage("ES");
