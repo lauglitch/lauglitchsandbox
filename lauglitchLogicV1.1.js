@@ -9,7 +9,7 @@ var site = "Home";  // home || contact
 toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
-console.log("Tracing: 1.04");
+console.log("Tracing: 1.05");
 
 function redirectToHomeES() {
     setLanguage("ES");
@@ -208,4 +208,10 @@ function toggleContentBasedOnURL() {
     } else {
         console.log("No existe esta página.");
     }
+}
+function showLangButtons(){
+     document.getElementById('botonesIdiomas').style.display = 'block';
+}
+function hideLangButtons(){
+     document.getElementById('botonesIdiomas').style.display = 'none';
 }
