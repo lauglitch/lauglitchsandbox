@@ -209,9 +209,14 @@ function toggleContentBasedOnURL() {
         console.log("No existe esta página.");
     }
 }
-function showLangButtons(){
-     document.getElementById('botonesIdiomas').style.display = 'block';
-}
-function hideLangButtons(){
-     document.getElementById('botonesIdiomas').style.display = 'none';
+function showOrHideLangButtons(){
+    var botonesIdiomas = document.getElementById('botonesIdiomas');
+    isShowing = window.getComputedStyle(botonesIdiomas).getPropertyValue('display');
+    if (isShowing === 'block') {
+        document.getElementById('botonesIdiomas').style.display = 'none';
+    } else if (estiloDisplay === 'none') {
+        document.getElementById('botonesIdiomas').style.display = 'block';
+    } else {
+        console.log('El estilo de visualización es otro:', estiloDisplay);
+    }
 }
