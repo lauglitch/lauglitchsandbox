@@ -10,27 +10,97 @@ toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
 
-console.log("Tracing: 1.07");
-
 function redirectToHomeES() {
     setLanguage("ES");
     setSite("home");
-    window.location.href = "https://www.lauglitch.com/";
+    window.location.href = "https://www.lauglitch.com";
+
+    var b = document.getElementById("bSpanish1");
+    b.style.opacity = "0.7";
+
+    b = document.getElementById("bSpanish2");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish3");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish4");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish1");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish2");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish3");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish4");
+    b.style.opacity = "1";
 }
 function redirectToHomeEN() {
     setLanguage("EN");
     setSite("home");
-    window.location.href =  "https://www.lauglitch.com/p/home.html";
+    window.location.href = "https://www.lauglitch.com/p/home.html";
+
+    var b = document.getElementById("bEnglish2");
+    b.style.opacity = "0.7";
+
+    b = document.getElementById("bSpanish1");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish2");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish3");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish4");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish1");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish3");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish4");
+    b.style.opacity = "1";
 }
 function redirectToContactES() {
     setLanguage("ES");
     setSite("contact");
     window.location.href = "https://www.lauglitch.com/p/contacto.html";
+
+    var b = document.getElementById("bSpanish3");
+    b.style.opacity = "0.7";
+
+    b = document.getElementById("bSpanish1");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish2");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish4");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish1");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish2");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish3");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish4");
+    b.style.opacity = "1";
 }
 function redirectToContactEN() {
     setLanguage("EN");
     setSite("contact");
     window.location.href = "https://www.lauglitch.com/p/contact.html";
+
+    var b = document.getElementById("bEnglish4");
+    b.style.opacity = "0.7";
+
+    b = document.getElementById("bSpanish1");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish2");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish3");
+    b.style.opacity = "1";
+    b = document.getElementById("bSpanish4");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish1");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish2");
+    b.style.opacity = "1";
+    b = document.getElementById("bEnglish3");
+    b.style.opacity = "1";
 }
 function setLanguage(lang) {
     language = lang;
@@ -51,9 +121,8 @@ function getDomain(url) {
 }
 function toggleContentBasedOnURL() {
     var currentURL = window.location.href;
-    console.log("Current url: " + currentURL);
-    
-    if (currentURL === "https://www.lauglitch.com/") { 
+
+    if (currentURL === "https://www.lauglitch.com/") {
         // HEADER
         document.getElementById('lauglitchLogoInicio').style.display = 'block';
         document.getElementById('keypadsInicio').style.display = 'block';
