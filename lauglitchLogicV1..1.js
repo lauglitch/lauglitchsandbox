@@ -9,6 +9,7 @@ var site = "Home";  // home || contact
 toggleContentBasedOnURL();
 // Call everytime the page changes
 window.onhashchange = toggleContentBasedOnURL;
+console.log("V 1.10");
 
 function redirectToHomeES() {
     setLanguage("ES");
