@@ -2,35 +2,22 @@
 // @ts-ignore
 // @ts-nocheck
 // @mime-type text/javascript
-var language = "ES"; // ES || EN
-var site = "Home";  // home || contact
 
-// Called of first page load
-toggleContentBasedOnURL();
-// Call everytime the page changes
-window.onhashchange = toggleContentBasedOnURL;
-console.log("Tracing: 1.051");
+// 0- VARIABLES
+var language = "ES";    // ES || EN
+var site = "Home";      // Home || Contact
+var webVersion = 'PC';  // PC || Mobile 
+var lauglitchButton = document.getElementById('lauglitchButton');
+var spanishButton = document.getElementById('spanishButton');
+var englishButton = document.getElementById('englishButton');
+var contactButton = document.getElementById('contactButton');
 
-function redirectToHomeES() {
-    setLanguage("ES");
-    setSite("home");
-    window.location.href = "https://lauglitchsandbox.blogspot.com/"; // "https://www.lauglitch.com";
-}
-function redirectToHomeEN() {
-    setLanguage("EN");
-    setSite("home");
-    window.location.href =  "https://lauglitch.com/p/home.html" //"https://www.lauglitch.com/p/home.html";
-}
-function redirectToContactES() {
-    setLanguage("ES");
-    setSite("contact");
-    window.location.href = "https://lauglitch.com/p/contacto.html" //"https://www.lauglitch.com/p/contacto.html";
-}
-function redirectToContactEN() {
-    setLanguage("EN");
-    setSite("contact");
-    window.location.href = "https://lauglitch.com/p/contact.html"; //"https://www.lauglitch.com/p/contact.html";
-}
+///////////// 1- ORDERED INSTRUCTIONS
+console.log("V1.11");                           // Debug version
+toggleContentBasedOnURL();                      // Called of first page load
+window.onhashchange = toggleContentBasedOnURL;  // Call everytime the page changes
+
+///////////// 2- GETTERS AND SETTERS
 function setLanguage(lang) {
     language = lang;
 }
@@ -43,26 +30,40 @@ function setSite(sit) {
 function getSite() {
     return site;
 }
+function setWebVersion(wVersion) {
+    webVersion = wVersion;
+}
+function getWebVersion() {
+    return webVersion;
+}
 function getDomain(url) {
     var a = document.createElement('a');
     a.href = url;
     return a.hostname;
 }
-function toggleContentBasedOnURL() {
-    var currentURL = window.location.href;
-    
-    if (currentURL === "https://lauglitchsandbox.blogspot.com/") { // "https://www.lauglitch.com";
-        console.log("1 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoInicio').style.display = 'block';
-        document.getElementById('keypadsInicio').style.display = 'block';
 
-        document.getElementById('lauglitchLogoHome').style.display = 'none';
-        document.getElementById('keypadsHome').style.display = 'none';
-        document.getElementById('lauglitchLogoContacto').style.display = 'none';
-        document.getElementById('keypadsContacto').style.display = 'none';
-        document.getElementById('lauglitchLogoContact').style.display = 'none';
-        document.getElementById('keypadsContact').style.display = 'none';
+///////////// 3- NAVIGATION METHODS
+function redirectToHomeES() {
+    window.location.href = "https://lauglitchsandbox.blogspot.com/";
+}
+function redirectToHomeEN() {
+    window.location.href = "https://www.lauglitch.com/p/home.html";
+}
+function redirectToContactES() {
+    window.location.href = "https://www.lauglitch.com/p/contacto.html";
+}
+function redirectToContactEN() {
+    window.location.href = "https://www.lauglitch.com/p/contact.html";
+}
+
+///////////// 4- ENGINE METHODS
+function toggleContentBasedOnURL() {        // Called after navigation methods
+    var currentURL = window.location.href;
+
+    if (currentURL === "https://lauglitchsandbox.blogspot.com/") {
+        setLanguage('ES');
+        setSite('Home');
+        setWebVersion('PC');
 
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
@@ -71,17 +72,9 @@ function toggleContentBasedOnURL() {
         document.getElementById('bodyContacto').style.display = 'none';
         document.getElementById('bodyContact').style.display = 'none';
     } else if (currentURL === 'https://www.lauglitch.com/p/home.html') {
-        console.log("2 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoHome').style.display = 'block';
-        document.getElementById('keypadsHome').style.display = 'block';
-
-        document.getElementById('lauglitchLogoInicio').style.display = 'none';
-        document.getElementById('keypadsInicio').style.display = 'none';
-        document.getElementById('lauglitchLogoContacto').style.display = 'none';
-        document.getElementById('keypadsContacto').style.display = 'none';
-        document.getElementById('lauglitchLogoContact').style.display = 'none';
-        document.getElementById('keypadsContact').style.display = 'none';
+        setLanguage('EN');
+        setSite('Home');
+        setWebVersion('PC');
 
         // BODY
         document.getElementById('bodyHome').style.display = 'block';
@@ -90,17 +83,9 @@ function toggleContentBasedOnURL() {
         document.getElementById('bodyContacto').style.display = 'none';
         document.getElementById('bodyContact').style.display = 'none';
     } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html') {
-        console.log("3 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoContacto').style.display = 'block';
-        document.getElementById('keypadsContacto').style.display = 'block';
-
-        document.getElementById('lauglitchLogoInicio').style.display = 'none';
-        document.getElementById('keypadsInicio').style.display = 'none';
-        document.getElementById('lauglitchLogoHome').style.display = 'none';
-        document.getElementById('keypadsHome').style.display = 'none';
-        document.getElementById('lauglitchLogoContact').style.display = 'none';
-        document.getElementById('keypadsContact').style.display = 'none';
+        setLanguage('ES');
+        setSite('Contact');
+        setWebVersion('PC');
 
         // BODY
         document.getElementById('bodyContacto').style.display = 'block';
@@ -109,17 +94,9 @@ function toggleContentBasedOnURL() {
         document.getElementById('bodyHome').style.display = 'none';
         document.getElementById('bodyContact').style.display = 'none';
     } else if (currentURL === 'https://www.lauglitch.com/p/contact.html') {
-        console.log("4 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoContact').style.display = 'block';
-        document.getElementById('keypadsContact').style.display = 'block';
-
-        document.getElementById('lauglitchLogoInicio').style.display = 'none';
-        document.getElementById('keypadsInicio').style.display = 'none';
-        document.getElementById('lauglitchLogoHome').style.display = 'none';
-        document.getElementById('keypadsHome').style.display = 'none';
-        document.getElementById('lauglitchLogoContacto').style.display = 'none';
-        document.getElementById('keypadsContacto').style.display = 'none';
+        setLanguage('EN');
+        setSite('Contact');
+        setWebVersion('PC');
 
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
@@ -130,17 +107,9 @@ function toggleContentBasedOnURL() {
     } 
    // MOBILE VERSION
     else if (currentURL === "https://www.lauglitch.com/?m=1") {
-        console.log("5 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoInicio').style.display = 'block';
-        document.getElementById('keypadsInicio').style.display = 'block';
-
-        document.getElementById('lauglitchLogoHome').style.display = 'none';
-        document.getElementById('keypadsHome').style.display = 'none';
-        document.getElementById('lauglitchLogoContacto').style.display = 'none';
-        document.getElementById('keypadsContacto').style.display = 'none';
-        document.getElementById('lauglitchLogoContact').style.display = 'none';
-        document.getElementById('keypadsContact').style.display = 'none';
+        setLanguage('ES');
+        setSite('Home');
+        setWebVersion('Mobile');
 
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
@@ -149,17 +118,9 @@ function toggleContentBasedOnURL() {
         document.getElementById('bodyContacto').style.display = 'none';
         document.getElementById('bodyContact').style.display = 'none';
     } else if (currentURL === 'https://www.lauglitch.com/p/home.html?m=1') {
-        console.log("6 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoHome').style.display = 'block';
-        document.getElementById('keypadsHome').style.display = 'block';
-
-        document.getElementById('lauglitchLogoInicio').style.display = 'none';
-        document.getElementById('keypadsInicio').style.display = 'none';
-        document.getElementById('lauglitchLogoContacto').style.display = 'none';
-        document.getElementById('keypadsContacto').style.display = 'none';
-        document.getElementById('lauglitchLogoContact').style.display = 'none';
-        document.getElementById('keypadsContact').style.display = 'none';
+        setLanguage('EN');
+        setSite('Home');
+        setWebVersion('Mobile');
 
         // BODY
         document.getElementById('bodyHome').style.display = 'block';
@@ -168,17 +129,9 @@ function toggleContentBasedOnURL() {
         document.getElementById('bodyContacto').style.display = 'none';
         document.getElementById('bodyContact').style.display = 'none';
     } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html?m=1') {
-        console.log("7 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoContacto').style.display = 'block';
-        document.getElementById('keypadsContacto').style.display = 'block';
-
-        document.getElementById('lauglitchLogoInicio').style.display = 'none';
-        document.getElementById('keypadsInicio').style.display = 'none';
-        document.getElementById('lauglitchLogoHome').style.display = 'none';
-        document.getElementById('keypadsHome').style.display = 'none';
-        document.getElementById('lauglitchLogoContact').style.display = 'none';
-        document.getElementById('keypadsContact').style.display = 'none';
+        setLanguage('ES');
+        setSite('Contact');
+        setWebVersion('Mobile');
 
         // BODY
         document.getElementById('bodyContacto').style.display = 'block';
@@ -187,17 +140,9 @@ function toggleContentBasedOnURL() {
         document.getElementById('bodyHome').style.display = 'none';
         document.getElementById('bodyContact').style.display = 'none';
     } else if (currentURL === 'https://www.lauglitch.com/p/contact.html?m=1') {
-        console.log("8 " + currentURL);
-        // HEADER
-        document.getElementById('lauglitchLogoContact').style.display = 'block';
-        document.getElementById('keypadsContact').style.display = 'block';
-
-        document.getElementById('lauglitchLogoInicio').style.display = 'none';
-        document.getElementById('keypadsInicio').style.display = 'none';
-        document.getElementById('lauglitchLogoHome').style.display = 'none';
-        document.getElementById('keypadsHome').style.display = 'none';
-        document.getElementById('lauglitchLogoContacto').style.display = 'none';
-        document.getElementById('keypadsContacto').style.display = 'none';
+        setLanguage('EN');
+        setSite('Contact');
+        setWebVersion('Mobile');
 
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
@@ -208,15 +153,47 @@ function toggleContentBasedOnURL() {
     } else {
         console.log("No existe esta página.");
     }
+
+    switchKeypadButtons();
 }
-function showOrHideLangButtons(){
-    var botonesIdiomas = document.getElementById('botonesIdiomas');
-    isShowing = window.getComputedStyle(botonesIdiomas).getPropertyValue('display');
-    if (isShowing === 'block') {
-        document.getElementById('botonesIdiomas').style.display = 'none';
-    } else if (isShowing === 'none') {
-        document.getElementById('botonesIdiomas').style.display = 'block';
+
+function switchKeypadButtons(){
+    if (getLanguage() === 'ES' & getSite() === 'Home'){
+        spanishButton.disabled = true;  // true === OFF ; false === ON
+        englishButton.disabled = false;
+        contactButton.disabled = false; 
+        lauglitchButton.disabled = true;
+
+        englishButton.onclick = redirectToHomeEN();
+
+    } else if (getLanguage() === 'EN' & getSite() === 'Home'){
+        spanishButton.disabled = false;
+        englishButton.disabled = true;
+        contactButton.disabled = false;
+        lauglitchButton.disabled = true;
+
+        spanishButton.onclick = redirectToHomeES();
+      
+    } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
+        spanishButton.disabled = true;
+        englishButton.disabled = false;
+        contactButton.disabled = true;
+        lauglitchButton.disabled = false;
+
+        englishButton.onclick = redirectToContactEN();
+        lauglitchButton.onclick = redirectToHomeES();
+      
+    } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
+        spanishButton.disabled = false;
+        englishButton.disabled = true;
+        contactButton.disabled = true;
+        lauglitchButton.disabled = false;
+
+        spanishButton.onclick = redirectToContactES();
+        lauglitchButton.onclick = redirectToHomeEN();
+
     } else {
-        console.log('El estilo de visualización es otro:', isShowing);
+        console.log('Variables de localización no identificadas.')
     }
+
 }
