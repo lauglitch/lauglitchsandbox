@@ -13,7 +13,7 @@ var englishButton = document.getElementById('englishButton');
 var contactButton = document.getElementById('contactButton');
 
 ///////////// 1- ORDERED INSTRUCTIONS
-console.log("V1.11");                           // Debug version
+console.log("V1.12");                           // Debug version
 toggleContentBasedOnURL();                      // Called of first page load
 window.onhashchange = toggleContentBasedOnURL;  // Call everytime the page changes
 
@@ -59,8 +59,9 @@ function redirectToContactEN() {
 ///////////// 4- ENGINE METHODS
 function toggleContentBasedOnURL() {        // Called after navigation methods
     var currentURL = window.location.href;
+    console.log(currentURL);
 
-    if (currentURL === "https://lauglitchsandbox.blogspot.com/") {
+    if (currentURL === "https://lauglitchsandbox.blogspot.com") {
         setLanguage('ES');
         setSite('Home');
         setWebVersion('PC');
