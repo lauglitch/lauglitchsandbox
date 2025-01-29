@@ -9,7 +9,7 @@ let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
 let version = "V1.1";
-let testTag = "1.1.1";
+let testTag = "1.1.2";
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -27,7 +27,7 @@ var DivImages = document.getElementById('DivImages');
 
 var DivContactLeft = document.getElementById('DivContactLeft');    
 var DivContactRight = document.getElementById('DivContactRight');  
-var DivContactForm = document.getElementById('DivContactForm');    
+//var DivContactForm = document.getElementById('DivContactForm');    
 var DivFindMe = document.getElementById('DivFindMe');               
 
 // (DIVS) INNER ELEMENTS
@@ -74,7 +74,7 @@ var englishButtonMobile = document.getElementById('englishButtonMobile');
 var contactButtonMobile = document.getElementById('contactButtonMobile');             
     /* */
 var englishErrorMessage = document.getElementById('spanishButtonMobile');  
-var englishSuccessMessage = document.getElementById('englishSuccessMessage');  
+//var englishSuccessMessage = document.getElementById('englishSuccessMessage');  
 
 var doneImage = document.getElementById('doneImage');  
 
