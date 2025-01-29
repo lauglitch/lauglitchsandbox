@@ -319,16 +319,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // Funciones de redirección
 function redirectToHomeES() {
-    applyPageTransition("https://www.lauglitchsb.blogspot.com/");
+    applyPageTransition("https://lauglitchsb.blogspot.com/");
 }
 function redirectToHomeEN() {
-    applyPageTransition("https://www.lauglitchsb.blogspot.com/p/home.html");
+    applyPageTransition("https://lauglitchsb.blogspot.com/p/home.html");
 }
 function redirectToContactES() {
-    applyPageTransition("https://www.lauglitchsb.blogspot.com/p/contacto.html");
+    applyPageTransition("https://lauglitchsb.blogspot.com/p/contacto.html");
 }
 function redirectToContactEN() {
-    applyPageTransition("https://www.lauglitchsb.blogspot.com/p/contact.html");
+    applyPageTransition("https://lauglitchsb.blogspot.com/p/contact.html");
 }
 
 ///////////// 4 - GRAPHICS
@@ -337,53 +337,53 @@ function setGlobalVariables() {
     var currentURL = window.location.href;
     //console.log("Current URL: " + currentURL);
 
-    if (currentURL === 'https://www.lauglitchsb.blogspot.com/') { 
+    if (currentURL === 'https://lauglitchsb.blogspot.com/') { 
         setLanguage('ES');
         setSite('Home');
         setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/home.html') {
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/home.html') {
         setLanguage('EN');
         setSite('Home');
         setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contacto.html') {
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contacto.html') {
         setLanguage('ES');
         setSite('Contact');
         setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contact.html') {
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contact.html') {
         setLanguage('EN');
         setSite('Contact');
         setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contacto/done.html'){
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contacto/done.html'){
         setLanguage('ES');
         setSite('Contact');
         setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contact/done.html'){
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contact/done.html'){
         setLanguage('EN');
         setSite('Contact');
         setDevice('PC');
     }
    // MOBILE VERSION
-    else if (currentURL === 'https://www.lauglitchsb.blogspot.com/?m=1') {
+    else if (currentURL === 'https://lauglitchsb.blogspot.com/?m=1') {
         setLanguage('ES');
         setSite('Home');
         setDevice('Mobile');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/home.html?m=1') {
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/home.html?m=1') {
         setLanguage('EN');
         setSite('Home');
         setDevice('Mobile');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contacto.html?m=1') {
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contacto.html?m=1') {
         setLanguage('ES');
         setSite('Contact');
         setDevice('Mobile');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contact.html?m=1') {
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contact.html?m=1') {
         setLanguage('EN');
         setSite('Contact');
         setDevice('Mobile');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contacto/done.html?m=1'){
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contacto/done.html?m=1'){
         setLanguage('ES');
         setSite('Contact');
         setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contact/done.html?m=1'){
+    } else if (currentURL === 'https://lauglitchsb.blogspot.com/p/contact/done.html?m=1'){
         setLanguage('EN');
         setSite('Contact');
         setDevice('PC');
@@ -440,8 +440,8 @@ function setDisplay(){
     });
 
     // Show or hider okButton
-    if ((currentURL === 'https://www.lauglitchsb.blogspot.com/p/contacto/done.html') || (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contact/done.html')
-    || (currentURL === 'https://www.lauglitchsb.blogspot.com/p/contacto/done.html?m=1') ||(currentURL === 'https://www.lauglitchsb.blogspot.com/p/contact/done.html?m=1')){
+    if ((currentURL === 'https://lauglitchsb.blogspot.com/p/contacto/done.html') || (currentURL === 'https://lauglitchsb.blogspot.com/p/contact/done.html')
+    || (currentURL === 'https://lauglitchsb.blogspot.com/p/contacto/done.html?m=1') ||(currentURL === 'https://lauglitchsb.blogspot.com/p/contact/done.html?m=1')){
         doneImage.style.display = 'block';
     } else {
         doneImage.style.display = 'none';
