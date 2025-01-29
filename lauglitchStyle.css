@@ -356,6 +356,23 @@ body#layout div.section {
     height: auto;
 }
 
+/* spanishForm and englishForm send buttons */
+.submit-button {
+    background-color: #007bff; /* Fondo azul */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado alrededor del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor cuando pasa por encima */
+    transition: background-color 0.3s ease; /* Transición suave cuando se hace hover */
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3; /* Fondo azul más oscuro cuando el cursor pasa por encima */
+  }
+  
+
 
 .boxframe {
     position: relative;
