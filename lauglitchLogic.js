@@ -9,7 +9,7 @@ let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
 let version = "V1.1";
-let testTag = "1.1.5";
+//let testTag = "1.1.5";
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -271,7 +271,7 @@ function getDomain(url) {
 
 ///////////// 2 - INSTRUCTIONS
 console.log(version);               // Web version                       
-console.log("testTag=" + testTag);  // Debug version
+//console.log("testTag=" + testTag);  // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -734,50 +734,53 @@ function enableButton(button) {
 
 function handleSubmit(formId, buttonId, messageId) {
     document.getElementById(formId).addEventListener('submit', function(event) {
-      event.preventDefault();  // Esto evita que el formulario se envíe normalmente
+      event.preventDefault();  // Prevent the form from being submitted in the traditional way
   
       let form = this;
       let formData = new FormData(form);
   
-      // Deshabilitar los campos del formulario
+      // Disable all form fields
       let formElements = form.elements;
       for (let i = 0; i < formElements.length; i++) {
         formElements[i].disabled = true;
       }
   
-      // Cambiar el texto del botón a "Enviando..." / "Sending..."
+      // Change the button text to "Enviando..." / "Sending..."
       let submitButton = document.getElementById(buttonId);
       let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
       let sentText = (language === "ES") ? "Enviado" : "Sent";
       
       submitButton.innerText = sendingText;
   
-      // Mostrar el mensaje de confirmación
+      // Show confirmation message
       document.getElementById(messageId).style.display = 'block';
   
-      // Hacer el envío usando fetch() para evitar la redirección
+      // Disable button after submitting
+      submitButton.disabled = true; 
+  
+      // Send using fetch() to avoid redirection
       fetch('https://formsubmit.co/ajax/tu-email@example.com', {
         method: 'POST',
         body: formData,
       })
       .then(response => response.json())
       .then(data => {
-        // Cambiar el texto del botón a "Sent"
+        // Change button text to "Sent"
         submitButton.innerText = sentText;
         
-        // Limpiar el formulario si la respuesta es exitosa
+        // Clear the form if the response is successful
         form.reset();
       })
       .catch(error => {
         console.error('Error al enviar el formulario:', error);
-        // Puedes cambiar el texto del botón en caso de error también
+        // If there is an error, reset the button
         submitButton.innerText = (language === "ES") ? "Enviar" : "Send";
+        submitButton.disabled = false;  // Re-enable the button
       });
     });
   }
   
-
-// Ejecutar la función para ambos formularios
+// Run the function for both forms
 handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
 handleSubmit("englishForm", "submitButtonEN", "confirmationMessageEN");
 
