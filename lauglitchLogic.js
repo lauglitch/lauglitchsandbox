@@ -293,20 +293,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // 2.4 Reset Contact Forms 
-window.addEventListener('load', function() {
-let forms = ["spanishForm", "contactFormEN"];
-let buttons = ["englishForm", "submitButtonEN"];
-let messages = ["confirmationMessageES", "confirmationMessageEN"];
+window.addEventListener("load", function () {
+    let forms = ["spanishForm", "englishForm"];
+    let buttons = ["submitButtonES", "submitButtonEN"]; 
+    let messages = ["confirmationMessageES", "confirmationMessageEN"];
 
-forms.forEach((formId, index) => {
-    document.getElementById(formId).reset();
-    let formElements = document.getElementById(formId).elements;
-    for (let i = 0; i < formElements.length; i++) {
-    formElements[i].disabled = false;
-    }
-    document.getElementById(buttons[index]).innerText = (language === "ES") ? "Enviar" : "Send";
-    document.getElementById(messages[index]).style.display = 'none';
-});
+    forms.forEach((formId, index) => {
+        let form = document.getElementById(formId);
+        let button = document.getElementById(buttons[index]);
+        let message = document.getElementById(messages[index]);
+
+        if (form && form.tagName === "FORM") {
+            form.reset(); // Restart form
+
+            // Reactivate all fields
+            Array.from(form.elements).forEach((element) => {
+                element.disabled = false;
+            });
+
+            // Restore submit button text
+            if (button) {
+                button.innerText = language === "ES" ? "Enviar" : "Send";
+            }
+
+            // Hide confirmation message
+            if (message) {
+                message.style.display = "none";
+            }
+        } else {
+            console.error("No se encontró un formulario con el ID: " + formId);
+        }
+    });
 });
 
 ///////////// 3 - NAVIGATION
@@ -715,36 +732,40 @@ function enableButton(button) {
     }
 }
 
-
 function handleSubmit(formId, buttonId, messageId) {
-    document.getElementById(formId).addEventListener('submit', function(event) {
-      // Disable all form fields
-      let formElements = this.elements;
-      for (let i = 0; i < formElements.length; i++) {
-        formElements[i].disabled = true;
-      }
+    let form = document.getElementById(formId);
+    let submitButton = document.getElementById(buttonId);
+    let confirmationMessage = document.getElementById(messageId);
 
-      // Change the button text to "Enviando..." / "Sending..."
-      let submitButton = document.getElementById(buttonId);
-      let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
-      let sentText = (language === "ES") ? "Enviado" : "Sent";
-      
-      submitButton.innerText = sendingText;
+    if (!form || !submitButton || !confirmationMessage) {
+        console.error(`Error: No se encontraron los elementos necesarios para ${formId}`);
+        return;
+    }
 
-      // Show confirmation message
-      document.getElementById(messageId).style.display = 'block';
+    form.addEventListener('submit', function(event) {
+        // Disable all form fields
+        for (let i = 0; i < form.elements.length; i++) {
+            form.elements[i].disabled = true;
+        }
 
-      // Change button text to "Sent" / "Sent" after 3 seconds
-      setTimeout(() => {
-        submitButton.innerText = sentText;
-      }, 3000);
+        // Change the button text to "Enviando..." / "Sending..."
+        let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
+        let sentText = (language === "ES") ? "Enviado" : "Sent";
+
+        submitButton.innerText = sendingText;
+
+        // Show confirmation message
+        confirmationMessage.style.display = 'block';
+
+        // Change button text to "Sent" after 3 seconds
+        setTimeout(() => {
+            submitButton.innerText = sentText;
+        }, 3000);
     });
-  }
+}
 
-  // Run function for both forms
-  handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
-  handleSubmit("englishForm", "submitButtonEN", "confirmationMessageEN");
-
-
+// Run function for both forms
+handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
+handleSubmit("englishForm", "submitButtonEN", "confirmationMessageEN");
 
 ///////////// END /////////////
