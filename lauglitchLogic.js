@@ -9,7 +9,7 @@ let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
 let version = "V1.1";
-let testTag = "1.1.3";
+let testTag = "1.1.4";
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -225,7 +225,7 @@ $('#moreButton').on('click', function() {
         langDropdownMobile.style.display = 'none';
         langDropdownMobile.classList.remove('show')
     } 
-    // Cierra langDropdownMobile si está desplegado
+    // Close langDropdownMobile if it is deployed
     if (moreDropdown.style.display === 'block'){
         moreDropdown.style.display = 'none';
         moreDropdown.style.opacity = 0;
