@@ -733,50 +733,49 @@ function enableButton(button) {
 }
 
 function handleSubmit(formId, buttonId, messageId) {
-    // Agrega un listener al evento 'submit' del formulario
     document.getElementById(formId).addEventListener('submit', function(event) {
-      
-      // Prevenir el comportamiento por defecto del formulario para evitar la redirección
-      event.preventDefault(); 
-
-      // Deshabilitar todos los campos del formulario
-      let formElements = this.elements;
+      event.preventDefault();  // Esto evita que el formulario se envíe normalmente
+  
+      let form = this;
+      let formData = new FormData(form);
+  
+      // Deshabilitar los campos del formulario
+      let formElements = form.elements;
       for (let i = 0; i < formElements.length; i++) {
         formElements[i].disabled = true;
       }
-
+  
       // Cambiar el texto del botón a "Enviando..." / "Sending..."
       let submitButton = document.getElementById(buttonId);
       let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
       let sentText = (language === "ES") ? "Enviado" : "Sent";
       
       submitButton.innerText = sendingText;
-
+  
       // Mostrar el mensaje de confirmación
       document.getElementById(messageId).style.display = 'block';
-
-      // Cambiar el texto del botón a "Enviado" / "Sent" después de 3 segundos
-      setTimeout(() => {
-        submitButton.innerText = sentText;
-      }, 3000);
-
-      // Aquí enviamos el formulario usando `fetch` para evitar la redirección
+  
+      // Hacer el envío usando fetch() para evitar la redirección
       fetch('https://formsubmit.co/ajax/tu-email@example.com', {
         method: 'POST',
-        body: new FormData(this), // Los datos del formulario
+        body: formData,
       })
-      .then(response => {
-        if (response.ok) {
-          console.log('Formulario enviado correctamente');
-        } else {
-          console.error('Hubo un problema al enviar el formulario');
-        }
+      .then(response => response.json())
+      .then(data => {
+        // Cambiar el texto del botón a "Sent"
+        submitButton.innerText = sentText;
+        
+        // Limpiar el formulario si la respuesta es exitosa
+        form.reset();
       })
       .catch(error => {
         console.error('Error al enviar el formulario:', error);
+        // Puedes cambiar el texto del botón en caso de error también
+        submitButton.innerText = (language === "ES") ? "Enviar" : "Send";
       });
     });
-}
+  }
+  
 
 // Ejecutar la función para ambos formularios
 handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
