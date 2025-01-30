@@ -356,6 +356,12 @@ body#layout div.section {
     height: auto;
 }
 
+form#spanishForm, form#englishForm {
+    width: 100%; /* Hace que el formulario ocupe todo el ancho disponible */
+    max-width: 600px; /* O puedes limitar el ancho máximo si lo deseas */
+    margin: 0 auto; /* Centra el formulario */
+}
+
 /* spanishForm and englishForm send buttons */
 .submit-button {
     background-color: #007bff; /* Fondo azul */
@@ -368,11 +374,9 @@ body#layout div.section {
     transition: background-color 0.3s ease; /* Transición suave cuando se hace hover */
   }
   
-  .submit-button:hover {
-    background-color: #0056b3; /* Fondo azul más oscuro cuando el cursor pasa por encima */
-  }
-  
-
+.submit-button:hover {
+background-color: #0056b3; /* Fondo azul más oscuro cuando el cursor pasa por encima */
+}
 
 .boxframe {
     position: relative;
