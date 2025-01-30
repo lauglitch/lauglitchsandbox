@@ -378,6 +378,11 @@ form#spanishForm, form#englishForm {
 background-color: #0056b3; /* Fondo azul más oscuro cuando el cursor pasa por encima */
 }
 
+.no-hover {
+    pointer-events: none;  /* Desactiva la interacción con el botón */
+    opacity: 0.5;          /* Opcional: Hace el botón menos visible */
+}
+
 .boxframe {
     position: relative;
     background: #fff;

@@ -734,51 +734,61 @@ function enableButton(button) {
 
 function handleSubmit(formId, buttonId, messageId) {
     document.getElementById(formId).addEventListener('submit', function(event) {
-      event.preventDefault();  // Prevent the form from being submitted in the traditional way
+      event.preventDefault();  // Evitar el envío estándar del formulario
   
       let form = this;
       let formData = new FormData(form);
   
-      // Disable all form fields
+      // Deshabilitar todos los campos del formulario
       let formElements = form.elements;
       for (let i = 0; i < formElements.length; i++) {
         formElements[i].disabled = true;
       }
   
-      // Change the button text to "Enviando..." / "Sending..."
+      // Cambiar el texto del botón a "Enviando..." / "Sending..."
       let submitButton = document.getElementById(buttonId);
       let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
       let sentText = (language === "ES") ? "Enviado" : "Sent";
       
       submitButton.innerText = sendingText;
   
-      // Show confirmation message
-      document.getElementById(messageId).style.display = 'block';
+      // Desactivar el botón para evitar más clics
+      submitButton.disabled = true;
   
-      // Disable button after submitting
-      submitButton.disabled = true; 
+      // Añadir clase .no-hover para desactivar el hover
+      submitButton.classList.add('no-hover');
   
-      // Send using fetch() to avoid redirection
+      // Hacer el envío utilizando fetch()
       fetch('https://formsubmit.co/ajax/tu-email@example.com', {
         method: 'POST',
         body: formData,
       })
       .then(response => response.json())
       .then(data => {
-        // Change button text to "Sent"
+        // Cuando la respuesta es exitosa, cambiar el texto a "Enviado"
         submitButton.innerText = sentText;
-        
-        // Clear the form if the response is successful
+  
+        // Mostrar el mensaje de confirmación solo después de que el botón diga "Enviado"
+        setTimeout(() => {
+          document.getElementById(messageId).style.display = 'block';
+        }, 300); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
+  
+        // Limpiar el formulario
         form.reset();
       })
       .catch(error => {
         console.error('Error al enviar el formulario:', error);
-        // If there is an error, reset the button
+  
+        // Si ocurre un error, restaurar el botón
         submitButton.innerText = (language === "ES") ? "Enviar" : "Send";
-        submitButton.disabled = false;  // Re-enable the button
+        submitButton.disabled = false;  // Habilitar el botón nuevamente
+  
+        // Eliminar la clase .no-hover para restaurar el hover
+        submitButton.classList.remove('no-hover');
       });
     });
-  }
+}
+  
   
 // Run the function for both forms
 handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
