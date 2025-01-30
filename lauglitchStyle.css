@@ -379,8 +379,8 @@ background-color: #0056b3; /* Fondo azul más oscuro cuando el cursor pasa por e
 }
 
 .no-hover {
-    pointer-events: none;  /* Desactiva la interacción con el botón */
-    opacity: 0.5;          /* Opcional: Hace el botón menos visible */
+    pointer-events: none;  
+    opacity: 0.5;          
 }
 
 .boxframe {

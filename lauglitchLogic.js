@@ -773,8 +773,7 @@ function handleSubmit(formId, buttonId, messageId) {
           document.getElementById(messageId).style.display = 'block';
         }, 1500); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
   
-        // Limpiar el formulario
-        form.reset();
+        // No restablecemos el formulario, solo lo dejamos inhabilitado
       })
       .catch(error => {
         console.error('Error al enviar el formulario:', error);
@@ -787,7 +786,8 @@ function handleSubmit(formId, buttonId, messageId) {
         submitButton.classList.remove('no-hover');
       });
     });
-}
+  }
+  
   
   
 // Run the function for both forms
