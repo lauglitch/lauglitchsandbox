@@ -771,9 +771,7 @@ function handleSubmit(formId, buttonId, messageId) {
         // Mostrar el mensaje de confirmación solo después de que el botón diga "Enviado"
         setTimeout(() => {
           document.getElementById(messageId).style.display = 'block';
-        }, 1500); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
-  
-        // No restablecemos el formulario, solo lo dejamos inhabilitado
+        }, 300); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
       })
       .catch(error => {
         console.error('Error al enviar el formulario:', error);
@@ -787,8 +785,6 @@ function handleSubmit(formId, buttonId, messageId) {
       });
     });
   }
-  
-  
   
 // Run the function for both forms
 handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
