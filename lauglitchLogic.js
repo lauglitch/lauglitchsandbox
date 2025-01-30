@@ -9,7 +9,7 @@ let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
 let version = "V1.1";
-let testTag = "1.1.2";
+let testTag = "1.1.3";
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -123,7 +123,7 @@ const webElements = [
     { htmlElem: contactButtonMobile,    lang: 'ALL', site: 'ALL', device: 'Mobile' },
 ]
 
-// 0.5 - Videojuegos (Imagenes y Links)
+// 0.5 - Videogames (Images and Links)
 var vgImages = [
     { 
         src: 'https://imgur.com/Usmc9kp.png', alt: 'Agenda 2025', link: 'https://github.com/lauglitch/Graphic-Design/blob/main/Agenda2025ByLauglitch.pdf' 
@@ -270,7 +270,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log(version);  // Web version                       
+console.log(version);               // Web version                       
 console.log("testTag=" + testTag);  // Debug version
 
 // 2.1. Graphics
@@ -284,26 +284,43 @@ window.addEventListener("resize", readjustContent);
 document.addEventListener("DOMContentLoaded", function () {
     const loaderContainer = document.querySelector(".loader-container");
 
-    // Mostrar el contenido después de cargar
+    // Show content after loading
     loaderContainer.style.opacity = 0;
     setTimeout(() => {
         loaderContainer.style.display = "none";
         content.style.opacity = 1;
-    }, 1000); // Tiempo de espera para el desvanecimiento  
+    }, 1000); // Fade Timeout
 });
+
+// 2.4 Reset Contact Forms 
+window.addEventListener('load', function() {
+let forms = ["spanishForm", "contactFormEN"];
+let buttons = ["englishForm", "submitButtonEN"];
+let messages = ["confirmationMessageES", "confirmationMessageEN"];
+
+forms.forEach((formId, index) => {
+    document.getElementById(formId).reset();
+    let formElements = document.getElementById(formId).elements;
+    for (let i = 0; i < formElements.length; i++) {
+    formElements[i].disabled = false;
+    }
+    document.getElementById(buttons[index]).innerText = (language === "ES") ? "Enviar" : "Send";
+    document.getElementById(messages[index]).style.display = 'none';
+});
+});
+
 ///////////// 3 - NAVIGATION
-// Función para aplicar la transición de página
-// Función para aplicar la transición de página
+// Function to apply page transition
 function applyPageTransition(url) {
     if (!isRedirecting) {
         isRedirecting = true;
         loaderContainer.style.opacity = 1;
         setTimeout(() => {
             redirectTo(url);
-        }, 1000); // Tiempo de espera para el desvanecimiento
+        }, 1000); // Fade Timeout
     }
 }
-// Función de redirección con transición
+// Redirect function with transition
 function redirectTo(url) {
     content.style.opacity = 0;
     content.style.transform = "translateY(20px)";
@@ -311,13 +328,13 @@ function redirectTo(url) {
         window.location.href = url;
     }, 500); 
 }
-// Evento al cargar la página
+// Event on page load
 document.addEventListener("DOMContentLoaded", function () {
     // Aplicar la transición de entrada al cargar la página
     content.style.opacity = 1;
     loaderContainer.style.opacity = 0;
 });
-// Funciones de redirección
+// Redirection Features
 function redirectToHomeES() {
     applyPageTransition("https://lauglitchsb.blogspot.com/");
 }
@@ -628,12 +645,12 @@ function changeNavbarAccordingToDevice() {
 }
 // Readjust common and existing content if navigating on PC or Mobile and if width<768px
 function readjustContent() {
-    const imageContainers = document.querySelectorAll('.image-container');  // Selección de los contenedores de las imágenes
+    const imageContainers = document.querySelectorAll('.image-container');  // Selecting image containers
 
     if (window.innerWidth < 768) {
         imageContainers.forEach(container => {
-            container.classList.remove('col-lg-4', 'col-md-4', 'text-center');  // Eliminar clases existentes si las hubiera
-            container.classList.add('col-sm-12', 'col-12', 'text-center');  // Agregar nuevas clases para pantallas pequeñas
+            container.classList.remove('col-lg-4', 'col-md-4', 'text-center');  // Delete existing classes if any
+            container.classList.add('col-sm-12', 'col-12', 'text-center');  // Add new classes for small screens
         });
 
         // Translate both columns 
@@ -648,8 +665,8 @@ function readjustContent() {
         
     } else {
         imageContainers.forEach(container => {
-            container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Eliminar clases existentes si las hubiera
-            container.classList.add('col-lg-4', 'col-md-4', 'text-center');  // Agregar nuevas clases para pantallas grandes
+            container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Delete existing classes if any
+            container.classList.add('col-lg-4', 'col-md-4', 'text-center');  // Add new classes for large screens
         });
 
         if (window.innerWidth < 991) {
@@ -697,5 +714,37 @@ function enableButton(button) {
         button.disabled = false;
     }
 }
+
+
+function handleSubmit(formId, buttonId, messageId) {
+    document.getElementById(formId).addEventListener('submit', function(event) {
+      // Disable all form fields
+      let formElements = this.elements;
+      for (let i = 0; i < formElements.length; i++) {
+        formElements[i].disabled = true;
+      }
+
+      // Change the button text to "Enviando..." / "Sending..."
+      let submitButton = document.getElementById(buttonId);
+      let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
+      let sentText = (language === "ES") ? "Enviado" : "Sent";
+      
+      submitButton.innerText = sendingText;
+
+      // Show confirmation message
+      document.getElementById(messageId).style.display = 'block';
+
+      // Change button text to "Sent" / "Sent" after 3 seconds
+      setTimeout(() => {
+        submitButton.innerText = sentText;
+      }, 3000);
+    });
+  }
+
+  // Run function for both forms
+  handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
+  handleSubmit("englishForm", "submitButtonEN", "confirmationMessageEN");
+
+
 
 ///////////// END /////////////
