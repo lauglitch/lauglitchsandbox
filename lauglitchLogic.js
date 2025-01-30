@@ -771,7 +771,7 @@ function handleSubmit(formId, buttonId, messageId) {
         // Mostrar el mensaje de confirmación solo después de que el botón diga "Enviado"
         setTimeout(() => {
           document.getElementById(messageId).style.display = 'block';
-        }, 300); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
+        }, 1500); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
   
         // Limpiar el formulario
         form.reset();
