@@ -358,7 +358,7 @@ body#layout div.section {
 
 form#spanishForm, form#englishForm {
     width: 100%; /* Hace que el formulario ocupe todo el ancho disponible */
-    max-width: 600px; /* O puedes limitar el ancho máximo si lo deseas */
+    max-width: 1200px; /* O puedes limitar el ancho máximo si lo deseas */
     margin: 0 auto; /* Centra el formulario */
 }
 
