@@ -733,38 +733,52 @@ function enableButton(button) {
 }
 
 function handleSubmit(formId, buttonId, messageId) {
-    let form = document.getElementById(formId);
-    let submitButton = document.getElementById(buttonId);
-    let confirmationMessage = document.getElementById(messageId);
+    // Agrega un listener al evento 'submit' del formulario
+    document.getElementById(formId).addEventListener('submit', function(event) {
+      
+      // Prevenir el comportamiento por defecto del formulario para evitar la redirección
+      event.preventDefault(); 
 
-    if (!form || !submitButton || !confirmationMessage) {
-        console.error(`Error: No se encontraron los elementos necesarios para ${formId}`);
-        return;
-    }
+      // Deshabilitar todos los campos del formulario
+      let formElements = this.elements;
+      for (let i = 0; i < formElements.length; i++) {
+        formElements[i].disabled = true;
+      }
 
-    form.addEventListener('submit', function(event) {
-        // Disable all form fields
-        for (let i = 0; i < form.elements.length; i++) {
-            form.elements[i].disabled = true;
+      // Cambiar el texto del botón a "Enviando..." / "Sending..."
+      let submitButton = document.getElementById(buttonId);
+      let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
+      let sentText = (language === "ES") ? "Enviado" : "Sent";
+      
+      submitButton.innerText = sendingText;
+
+      // Mostrar el mensaje de confirmación
+      document.getElementById(messageId).style.display = 'block';
+
+      // Cambiar el texto del botón a "Enviado" / "Sent" después de 3 segundos
+      setTimeout(() => {
+        submitButton.innerText = sentText;
+      }, 3000);
+
+      // Aquí enviamos el formulario usando `fetch` para evitar la redirección
+      fetch('https://formsubmit.co/ajax/tu-email@example.com', {
+        method: 'POST',
+        body: new FormData(this), // Los datos del formulario
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Formulario enviado correctamente');
+        } else {
+          console.error('Hubo un problema al enviar el formulario');
         }
-
-        // Change the button text to "Enviando..." / "Sending..."
-        let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
-        let sentText = (language === "ES") ? "Enviado" : "Sent";
-
-        submitButton.innerText = sendingText;
-
-        // Show confirmation message
-        confirmationMessage.style.display = 'block';
-
-        // Change button text to "Sent" after 3 seconds
-        setTimeout(() => {
-            submitButton.innerText = sentText;
-        }, 3000);
+      })
+      .catch(error => {
+        console.error('Error al enviar el formulario:', error);
+      });
     });
 }
 
-// Run function for both forms
+// Ejecutar la función para ambos formularios
 handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
 handleSubmit("englishForm", "submitButtonEN", "confirmationMessageEN");
 
