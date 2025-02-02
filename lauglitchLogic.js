@@ -9,7 +9,7 @@ let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
 let version = "V1.1";
-//let testTag = "1.1.5";
+let testTag = "1.1.6";
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -271,7 +271,7 @@ function getDomain(url) {
 
 ///////////// 2 - INSTRUCTIONS
 console.log(version);               // Web version                       
-//console.log("testTag=" + testTag);  // Debug version
+console.log("testTag=" + testTag);  // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -670,6 +670,12 @@ function readjustContent() {
             container.classList.add('col-sm-12', 'col-12', 'text-center');  // Add new classes for small screens
         });
 
+        // English and Spanish small forms on Contact Page
+        spanishForm.parentElement.classList.remove('pcForm');   // Delete existing classes if any
+        spanishForm.parentElement.classList.add('mobileForm');  // Add new classes for small screens
+        englishForm.parentElement.classList.remove('pcForm');   // Delete existing classes if any
+        englishForm.parentElement.classList.add('mobileForm');  // Add new classes for small screens
+
         // Translate both columns 
         DivContactLeft.style.marginLeft = "10%"
         DivContactRight.style.marginLeft = "10%"
@@ -685,6 +691,12 @@ function readjustContent() {
             container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Delete existing classes if any
             container.classList.add('col-lg-4', 'col-md-4', 'text-center');  // Add new classes for large screens
         });
+
+        // English and Spanish small forms on Contact Page
+        spanishForm.parentElement.classList.remove('mobileForm');   // Delete existing classes if any
+        spanishForm.parentElement.classList.add('pcForm');          // Add new classes for large screens
+        englishForm.parentElement.classList.remove('mobileForm');   // Delete existing classes if any
+        englishForm.parentElement.classList.add('pcForm');          // Add new classes for large screens
 
         if (window.innerWidth < 991) {
             spanishForm.classList.add("contactStyleSmall")

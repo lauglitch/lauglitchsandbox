@@ -356,10 +356,19 @@ body#layout div.section {
     height: auto;
 }
 
+/* PC Version Formularies */
+.pcForm {
+    width:70%;
+}
+/* Mobile Version Formularies */
+.mobileForm {
+    width:100%;
+}
+
 form#spanishForm, form#englishForm {
-    width: 100%; /* Hace que el formulario ocupe todo el ancho disponible */
-    max-width: 1200px; /* O puedes limitar el ancho máximo si lo deseas */
-    margin: 0 auto; /* Centra el formulario */
+    width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto; 
 }
 
 /* spanishForm and englishForm send buttons */
