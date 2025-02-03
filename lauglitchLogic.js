@@ -675,17 +675,15 @@ function readjustContent() {
         spanishForm.parentElement.classList.add('mobileForm');  // Add new classes for small screens
         englishForm.parentElement.classList.remove('pcForm');   // Delete existing classes if any
         englishForm.parentElement.classList.add('mobileForm');  // Add new classes for small screens
-
-        // Translate both columns 
-        DivContactLeft.style.marginLeft = "10%"
-        DivContactRight.style.marginLeft = "10%"
-
         spanishForm.classList.add("contactStyleSmall")
         englishForm.classList.add("contactStyleSmall")
         spanishForm.classList.remove("contactStyleLarge")
         englishForm.classList.remove("contactStyleLarge")
 
-        
+        // Translate both columns 
+        DivContactLeft.style.marginLeft = "10%"
+        DivContactRight.style.marginLeft = "10%"
+ 
     } else {
         imageContainers.forEach(container => {
             container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Delete existing classes if any
